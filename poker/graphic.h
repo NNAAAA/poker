@@ -722,7 +722,7 @@ void DrawPokerText(int left,int top,int colorBg=0*16+2, int length=0, int width=
     SetColor(colorBg);
     SetPosition(left + ceil(width / 2) , top + ceil(length / 2) - 2);
     //cout << "OOO     OOOO    0  0   00000   000   ";
-    cout << char(219) << char(219) << char(219)<<"     "<< char(219) << char(219) << char(219)<<char(219)<<"    "<<char(219)<<"  "<<char(219)<<"   "<< char(219) << char(219) << char(219) << char(219) << char(219)<<"   " << char(219) << char(219) << char(219) << " ";
+    cout << char(219) << char(219) << char(219)<<"     "<< char(219) << char(219) << char(219)<<char(219)<<"    "<<char(219)<<"  "<<char(219)<<"   "<< char(219) << char(219) << char(219) << char(219) <<"   " << char(219) << char(219) << char(219) << " ";
 
     SetPosition(left + ceil(width / 2) , top + ceil(length / 2) - 1);
     //cout << "O  O   O    O   0 0    0       0  0 ";
@@ -732,7 +732,7 @@ void DrawPokerText(int left,int top,int colorBg=0*16+2, int length=0, int width=
     SetColor(8 + colorBg / 16 * 16);
     cout << char(6);
     SetColor(colorBg);
-    cout << char(219) << "   " << char(219) << " " << char(219) << "    " << char(219) << "       " << char(219) << "  " << char(219) << "";
+    cout << char(219) << "   " << char(219) << " " << char(219) << "    " << char(219) << "      " << char(219) << "  " << char(219) << "";
 
 
     SetPosition(left + ceil(width / 2) , top + ceil(length / 2));
@@ -743,7 +743,7 @@ void DrawPokerText(int left,int top,int colorBg=0*16+2, int length=0, int width=
     SetColor(colorBg);
     cout << "    ";
     SetColor(colorBg);
-    cout << char(219) << "   " << char(219) << char(219) << "     " << char(219) << char(219) << char(219) << char(219) << char(219) << "   " << char(219) << char(219) << char(219) << " ";
+    cout << char(219) << "   " << char(219) << char(219) << "     " << char(219) << char(219) << char(219) << char(219)  << "   " << char(219) << char(219) << char(219) << " ";
 
 
     SetPosition(left + ceil(width / 2) , top + ceil(length / 2) + 1);
@@ -756,13 +756,13 @@ void DrawPokerText(int left,int top,int colorBg=0*16+2, int length=0, int width=
     SetColor(4 + colorBg / 16 * 16);
     cout<< char(4);
     SetColor(colorBg);
-    cout<< char(219) << "   " << char(219) << " " << char(219) << "    " << char(219) << "       " << char(219) << "  " << char(219) << "";
+    cout<< char(219) << "   " << char(219) << " " << char(219) << "    " << char(219) << "      " << char(219) << "  " << char(219) << "";
 
 
 
     SetPosition(left + ceil(width / 2) , top + ceil(length / 2) + 2);
     //cout << "O       OOOO    0  0   00000   0  0 ";
-    cout << char(219) << "       " << char(219) << char(219) << char(219) << char(219) << "    " << char(219) << "  " << char(219) << "   " << char(219) << char(219) << char(219) << char(219) << char(219) << "   " << char(219) << "  "<<char(219) << "";
+    cout << char(219) << "       " << char(219) << char(219) << char(219) << char(219) << "    " << char(219) << "  " << char(219) << "   " << char(219) << char(219) << char(219) << char(219) << "   " << char(219) << "  "<<char(219) << "";
 
 
 
