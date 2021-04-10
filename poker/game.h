@@ -740,7 +740,7 @@ void* start(void* arg){
             DrawPointForDealerMode(points, numbOfPlayer);
             DrawDealerAndPlayer(numbOfPlayer);
             DrawOption();
-            DrawPokerText(-11, 4, 9 * 16 + 0, 13, 75);      //left top color length width
+            DrawPokerText(-9, 4, 9 * 16 + 0, 13, 75);      //left top color length width
             key = _getch();
 
             DrawTable();

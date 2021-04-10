@@ -73,7 +73,7 @@ int pickCardof_Hard_Dealer(int* cardrest, int** hand) {
     }
     newhand[5][0] = cardrest[0];
     newhand[5][1] = cardrest[1];
-    sortNewHand(newhand);
+    sortNewHand(newhand, desc);
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -88,7 +88,7 @@ int pickCardof_Hard_Dealer(int* cardrest, int** hand) {
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-    int suit[4][6];                              // find better flush -- suit
+    int suit[4][7];                              // find better flush -- suit
     for (int i = 0; i < 4; i++) suit[i][6] = 0;
     int nSuit = 0;
     for (int i = 0; i < 6; i++) {
@@ -272,9 +272,10 @@ int pickCardof_Hard_Dealer(int* cardrest, int** hand) {
                 if (hand[i][0] != Dealer[j][0] || hand[i][1] != Dealer[j][1]) theSAME++;
             }
             if (theSAME == 5) return i;
+            theSAME = 0;
         }
     }
-    return -1;
+
     for (int i = 0; i < 5; i++) {
         delete[]Dealer[i];
     }
@@ -285,7 +286,8 @@ int pickCardof_Hard_Dealer(int* cardrest, int** hand) {
     }
     delete[] newR;
     delete[] newhand;
-
+    delete []oldR;
+    return -1;
 }
 bool dealerChoseHard(int** dealer, int* tempCard, int times) {
     int length = 13;
@@ -295,7 +297,7 @@ bool dealerChoseHard(int** dealer, int* tempCard, int times) {
     int chose = 0;
     int key;
     while (true) {
-        SetColor(2 * 16);
+        SetColor(9 * 16);
         SetPosition(left + ceil(width / 2) - 12, top + ceil(length / 2) - 1);
         cout << "                                ";
         SetColor(7);
@@ -304,7 +306,7 @@ bool dealerChoseHard(int** dealer, int* tempCard, int times) {
 
         //hands
         SetPosition(left + ceil(width / 2) - 13, top + ceil(length / 2) - 1);
-        cout << " My hands :                   ";
+        cout << " My hands :                      ";
         SetPosition(left + ceil(width / 2) - 1, top + ceil(length / 2) - 1);
         printOneCard(dealer[0][0], dealer[0][1], 0);
         for (int i = 1; i < 5; ++i) {
@@ -313,7 +315,7 @@ bool dealerChoseHard(int** dealer, int* tempCard, int times) {
         }
 
         //clearfix
-        SetColor(2 * 16);
+        SetColor(9 * 16);
         SetPosition(left + ceil(width / 2) - 8, top + ceil(length / 2));
         cout << "                        ";
         SetColor(7);
@@ -329,28 +331,33 @@ bool dealerChoseHard(int** dealer, int* tempCard, int times) {
             SetColor(7 * 16);
         SetPosition(left + ceil(width / 2), top + ceil(length / 2));
         cout << " NO ";
-
-
+        SetColor(7);
+        //yes =0   || no =1
+                /// 
         if (pickCardof_Hard_Dealer(tempCard, dealer) > -1) chose = 0;
+        else chose = 1;
+
         if (chose == 0)
             SetColor(7 * 16);
         SetPosition(left + ceil(width / 2) - 5, top + ceil(length / 2));
         cout << " YES ";
         SetColor(7);
-
+        Sleep(1000);
         if (chose == 1)
             SetColor(7 * 16);
         SetPosition(left + ceil(width / 2), top + ceil(length / 2));
         cout << " NO ";
         SetColor(7);
 
-        Sleep(900);
+        Sleep(1000);
+        break;
+
     }
     if (chose == 1)
         return false;
     return true;
 }
-bool dealerChose(int **dealer,int times) {
+bool dealerChoseMedium(int **dealer,int ***players,int n,int times) {
     int length = 13;
     int width = 75;
     int left = 8;
@@ -397,7 +404,87 @@ bool dealerChose(int **dealer,int times) {
         cout << " NO ";
         
         int x;
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < 2; ++i) {
+            Sleep(1000);
+            x = rand() % 2;
+            if (i==2){
+                x = getStatusOfHand(dealer)>bestStatus(players,n) ? 1 : 0;
+            }
+            if (x == 0) {
+                chose = 0;
+            }
+            else {
+                chose = 1;
+            }
+
+            if (chose == 0)
+                SetColor(7 * 16);
+            SetPosition(left + ceil(width / 2) - 4, top + ceil(length / 2));
+            cout << " YES ";
+            SetColor(7);
+
+            if (chose == 1)
+                SetColor(7 * 16);
+            SetPosition(left + ceil(width / 2) + 1, top + ceil(length / 2));
+            cout << " NO ";
+            SetColor(7);
+        }
+        
+        Sleep(900);
+        break;
+    }
+    if (chose == 1)
+        return false;
+    return true;
+}
+bool dealerChoseEasy(int **dealer,int times) {
+    int length = 13;
+    int width = 75;
+    int left = 8;
+    int top = 5;
+    int chose = 0;
+    int key;
+    int colorBg = 9;
+    while (true) {
+        //clearfix
+        SetColor(colorBg * 16);
+        SetPosition(left + ceil(width / 2) - 12, top + ceil(length / 2) - 1);
+        cout << "                                ";
+        SetColor(7);
+
+        SetPosition(left + ceil(width / 2) - 19, top + ceil(length / 2) - 2);
+        cout << " I'm Dealer , this's my turn , "<< times << " times ";
+
+        //hands
+        SetPosition(left + ceil(width / 2) - 13, top + ceil(length / 2) - 1);
+        cout << " My hands :                   ";
+        SetPosition(left + ceil(width / 2) - 1, top + ceil(length / 2) - 1);
+        printOneCard(dealer[0][0], dealer[0][1], 0);
+        for (int i = 1; i < 5; ++i) {
+            SetPosition(left + ceil(width / 2) - 1 + i * 3 + marginLeft(dealer, i), top + ceil(length / 2) - 1);
+            printOneCard(dealer[i][0], dealer[i][1], 0);
+        }
+
+        //clearfix
+        SetColor(colorBg * 16);
+        SetPosition(left + ceil(width / 2) - 8, top + ceil(length / 2) );
+        cout << "                        ";
+        SetColor(7);
+
+        //chose
+        if (chose == 0)
+            SetColor(7 * 16);
+        SetPosition(left + ceil(width / 2) - 4, top + ceil(length / 2) );
+        cout << " YES ";
+        SetColor(7);
+
+        if (chose == 1)
+            SetColor(7 * 16);
+        SetPosition(left + ceil(width / 2) + 1, top + ceil(length / 2) );
+        cout << " NO ";
+        
+        int x;
+        for (int i = 0; i < 2; ++i) {
             Sleep(1000);
             x = rand() % 2;
             if (x == 0) {
@@ -1557,7 +1644,7 @@ void HandleDealerEasy(int** dealer, int*& restDeck) {
     int top = 4;
     sort(dealer, asc);
     for (int i = 0; i < 3; ++i) {
-        bool chosen = dealerChose(dealer, 3 - i);
+        bool chosen = dealerChoseEasy(dealer, 3 - i);
         if (chosen == true) {
             int* tempCard = pickOneCard(restDeck);
             int pos = dealerPickToPlace(dealer, tempCard);
@@ -1581,7 +1668,7 @@ void HandleDealerMedium(int** dealer, int*** players, int n, int*& restDeck) {
     sort(dealer, asc);
     for (int i = 0; i < 3; ++i) {
 
-        bool chosen = dealerChose(dealer, 3 - i);
+        bool chosen = dealerChoseMedium(dealer,players,n, 3 - i);
         if (chosen == true) {
             int* tempCard = pickOneCard(restDeck);
             int pos = dealerPickToPlace(dealer, tempCard);
@@ -1593,7 +1680,7 @@ void HandleDealerMedium(int** dealer, int*** players, int n, int*& restDeck) {
             break;
     }
 }
-void HandleDealerHard(int** dealer, int*** players, int n, int*& restDeck) {
+void HandleDealerHard(int** dealer, int*** players, int n, int* &restDeck) {
     int key;
     int colorText = 8;
     int colorBg = 8;
@@ -1609,10 +1696,12 @@ void HandleDealerHard(int** dealer, int*** players, int n, int*& restDeck) {
         if (chosen == true) {
             int pos = pickCardof_Hard_Dealer(tempCard, dealer);
             swapPointer(dealer[pos], tempCard);
+            restDeck = &restDeck[1];
             sort(dealer, asc);
         }
         delete[] tempCard;
         if (chosen != true) break;
     }
+    
 }
 
