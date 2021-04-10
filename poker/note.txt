@@ -1,0 +1,16 @@
+Fix
+- FullHouse
+- upgrade Suffle
+- how many players win
+- limitation: 5 ppl (4 player & 1 dealer) to can pick more cards
+
+Update 
+-life circle
+-easy and hard mode
+-the same category:
+  + higher -> win
+  + the same -> dealer win 
+
+......
+
+  
