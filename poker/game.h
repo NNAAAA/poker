@@ -456,7 +456,7 @@ void* start(void* arg){
                 DrawTable();
                 DrawPreResult();
 
-                Sleep(1500);
+                key=_getch();
                 DrawTable();
                 DrawHandsForDealerMode(players, numbOfPlayer);
                 int* winner = rankingHands(players, numbOfPlayer);
@@ -464,7 +464,6 @@ void* start(void* arg){
                 Winner(winner, mode);
                 DrawPointForDealerMode(points, numbOfPlayer);
                 cleanup(players, winner, numbOfPlayer);
-                delete[] restDeck;
             }
             if (key == 27) {
                 option = 1;

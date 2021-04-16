@@ -1032,18 +1032,20 @@ int DrawMenuSelect(bool &menu) {
             SetPosition(left, top + 5 + j);
             cout << "                           ";           
         }
+        SetPosition(left + 40, top+4);
+        cout<<"             ";
         SetPosition(0,0);
-        SetColor(6);
-        SetPosition(left + 22, top+4);
-        cout << "Number of player: ";
-        Sleep(500);
         SetColor(6);
         if ((i == 0 && (n > 10 || n < 2)) || (i == 2 && (n > 7 || n < 1)) || (i >=4 && (n > 5 || n < 1)))
             SetColor(4);
+        SetPosition(left + 22, top+4);
+        cout << "Number of player: ";
+        Sleep(700);
+        
+        SetColor(6);
         SetPosition(left + 40, top+4);
         ShowCur(1);
         cin>>n;
-        SetColor(7);
     } while ((i == 0 && (n > 10 || n < 2)) || (i == 2 && (n > 7 || n < 1)) || (i >=4 && (n > 5 || n < 1)));
 
     ShowCur(0);
