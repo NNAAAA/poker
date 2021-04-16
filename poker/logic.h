@@ -174,11 +174,13 @@ int max4(int** hand) {
             return hand[i][1];
         }
     }
+    return 0;
 }
 int max3(int** hand) {
     for (int i = 0; i < 3; i++) {
         if ((hand[i][1] == hand[i + 1][1]) && (hand[i][1] == hand[i + 2][1])) return hand[i][1];
     }
+    return 0;
 }
 int* maxRanks(int** hand, int point) {
     int** clone = new int* [5];
@@ -235,6 +237,7 @@ int* maxRanks(int** hand, int point) {
         }
         return ranksArray;
     }    
+    return 0;
 }
 int* MaxRanks(int numbOfStatusOne, int** ranks, int**player)
 {
