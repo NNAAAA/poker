@@ -58,7 +58,7 @@ void printRestDeck(int* rest);
 void printAllCard(int Deck[][13]);
 
 
-//defination------------------------------------------------------------------------------------------------
+//defination---------------------------------------------------------------------------
 //utility
 bool asc(int a, int b) {
     return a > b;
@@ -408,22 +408,6 @@ int getHighestCard(int** hand) {
     }
     return rank[0] * 13 + rank[1];
 }
-
-
-void pickLuckCard(int** hand, int* &restDeck) {
-    srand(time(NULL));
-    for (int i = 0; i < 3; i++) {
-        int x = rand() % 2;
-        if (x == 1) {
-            int iLuck = rand() % 5;
-            hand[iLuck][0] = restDeck[0] / 13;
-            hand[iLuck][1] = restDeck[0] % 13;
-            restDeck++;
-        }
-    }
-}
-void pickSmartCard(int** hand, int* restDeck) {
-}
 int** dealingForHand(int Deck[][13], int& x, int& y) {
     int** pPlayer = new  int* [5];
     for (int i = 0; i < 5; i++) pPlayer[i] = new int[2];
@@ -502,28 +486,13 @@ int* rankingHands(int*** hands, int n) {
         }
     }
 
-    // SetColor(7 * 16);
-    // for (int i = -1; i < n; ++i) {
-    //     SetPosition(95, 6 + i);
-    //     cout << "         ";
-    // }
-    // SetPosition(95, 5);
-    // cout << "Status";                                                   //scores
-    // for (int i = 0; i < n; ++i) {
-    //     SetPosition(96, 6 + i);
-    //     cout << "id " << players[i][0] + 1 << ":" << players[i][1];
-    // }
-
-
     int numbOfStatusOne = 1;
     for (int i = 1; i < n ; i++) {
         if (players[0][1]==players[i][1])   numbOfStatusOne++;         // count tie players
     }
     
-    
     int* winner= MaxRanks(numbOfStatusOne, maxVal,players);
-
-    for (int i = 0; i < n; ++i) {                              //delete template players
+    for (int i = 0; i < n; ++i) {                                      //delete template players
         delete[] players[i];
         delete[] maxVal[i];
     }
@@ -606,6 +575,9 @@ int dealerPickToPlaceHard(int** dealer, int* tempCard) {
     swapPointer(dealer[curPos], tempCard);
     return curPos;
 }
+
+
+
 
 
 //testing

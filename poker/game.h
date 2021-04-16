@@ -320,7 +320,10 @@ void* start(void* arg){
                     else if (mode >= 2)
                         DrawPointForDealerMode(points, numbOfPlayer);
                     WinnerTop(evaluateHands(points, numbOfPlayer),mode);
-                    delete[]points;           
+                    delete[]points;
+                    system("cls");
+                    DrawEndGame();
+                    _getch();           
                     break;
                 }        
             }
@@ -410,7 +413,10 @@ void* start(void* arg){
                         clearOption(posOption);
                         DrawPoint(points, numbOfPlayer);
                         WinnerTop(evaluateHands(points, numbOfPlayer),mode);
-                        delete[]points;                  
+                        delete[]points; 
+                        system("cls");
+                        DrawEndGame();  
+                        _getch();               
                         break;
                     }        
                 }
@@ -511,6 +517,9 @@ void* start(void* arg){
                         DrawPointForDealerMode(points, numbOfPlayer);
                         WinnerTop(evaluateHands(points, numbOfPlayer), mode);
                         delete[]points;
+                        system("cls");
+                        DrawEndGame();
+                        _getch();
                         break;
                     }
                 }
@@ -613,6 +622,9 @@ void* start(void* arg){
                         DrawPointForDealerMode(points, numbOfPlayer);
                         WinnerTop(evaluateHands(points, numbOfPlayer),mode);
                         delete[]points;
+                        system("cls");
+                        DrawEndGame();
+                        _getch();
                         break;
                     }        
                 }
@@ -714,6 +726,9 @@ void* start(void* arg){
                         DrawPointForDealerMode(points, numbOfPlayer);
                         WinnerTop(evaluateHands(points, numbOfPlayer), mode);
                         delete[]points;
+                        system("cls");
+                        DrawEndGame();
+                        _getch();
                         break;
                     }
                 }
@@ -815,6 +830,9 @@ void* start(void* arg){
                         DrawPointForDealerMode(points, numbOfPlayer);
                         WinnerTop(evaluateHands(points, numbOfPlayer), mode);
                         delete[]points;
+                        system("cls");
+                        DrawEndGame();
+                        _getch();
                         break;
                     }
                 }

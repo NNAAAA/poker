@@ -8,7 +8,7 @@
 #include <math.h>
 
 
-//defination-----------------------------------------------------------------------------
+//definition-------------------------------------------------------------------------
 //utility
 int marginLeft(int** hand, int currentCard) {
     int count = 0;
@@ -1304,7 +1304,15 @@ void DrawPlayer(int n) {
     } 
     SetColor(7);
 }
-
+void DrawEndGame(){
+    SetColor(6);
+    int left = 40;
+    int top = 12;
+    SetPosition(left,top);
+    cout<<"Copyright: Nguyen Anh and Quoc Nam";
+    SetPosition(left+8,top+1);
+    cout<<"Thanks for playing";
+}
  
 //dealer
 void HandlePlayer(int*** hand, int n, int*& restDeck) {
@@ -1565,8 +1573,6 @@ void WinnerTop(int* winner, int mode = 0) {
         return;
     }
 
-
-
     if (mode == 0) {
         for (int i = 0; i < n; ++i)
             cout << winner[i] + 1 << " ";
@@ -1701,7 +1707,6 @@ void HandleDealerHard(int** dealer, int*** players, int n, int* &restDeck) {
         }
         delete[] tempCard;
         if (chosen != true) break;
-    }
-    
+    }   
 }
 
