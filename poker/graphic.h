@@ -931,7 +931,7 @@ int DrawMenuSelect(bool &menu) {
     
     SetPosition(left + 24, top + 6);
     SetColor(8);
-    cout << char(3);
+    cout << char(5);
     SetColor(6);
     cout << " With dealer";
 
