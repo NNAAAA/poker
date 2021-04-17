@@ -769,7 +769,7 @@ void* start(void* arg){
                 DrawTable();
                 DrawPreResult();
 
-                key = _getch();
+                _getch();
                 DrawTable();
                 DrawHandsForDealerMode(players, numbOfPlayer);
                 int* winner = rankingHands(players, numbOfPlayer);
@@ -848,7 +848,7 @@ void* start(void* arg){
             }
         }
     }
-    SetPosition(30, 30);
+    SetPosition(0, 0);
     return 0;
 }
 
@@ -859,6 +859,4 @@ void game() {
    pthread_create(&animation, NULL, &keyframe, NULL);
    pthread_join(play, NULL);
    pthread_join(animation, NULL);
-
-
 }
