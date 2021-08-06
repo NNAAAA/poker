@@ -1,1 +1,1 @@
-😀 This my project in first year
+😀 This my project about c++ game in first year
