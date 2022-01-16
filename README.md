@@ -1,4 +1,4 @@
-<h1 style="text-align:center;width:100%;">Poker</h1>
+<h1 style="text-align:center;width:100%;display:inline-block;">Poker</h1>
 
 > the game with some cards that you must be use entire of your intelligent brain but the fortune is essential
 
